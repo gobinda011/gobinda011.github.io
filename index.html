@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gobinda Chetry | Portfolio</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0f172a; /* Slate 900 Dark Mode background */
+            color: #f1f5f9;
+            line-height: 1.6;
+        }
+
+        /* --- NAVIGATION --- */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(15, 23, 42, 0.9);
+            backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 10%;
+            z-index: 1000;
+            border-bottom: 1px solid #1e293b;
+        }
+        .logo {
+            font-size: 20px;
+            font-weight: 700;
+            color: #38bdf8;
+        }
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+        .nav-links a {
+            color: #94a3b8;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover {
+            color: #38bdf8;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 100px 10% 0 10%;
+            background: radial-gradient(circle at top right, rgba(56, 189, 248, 0.08), transparent 40%);
+        }
+        .hero-sub {
+            color: #38bdf8;
+            font-weight: 600;
+            font-size: 16px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .hero-title {
+            font-size: 56px;
+            font-weight: 800;
+            color: #f8fafc;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+        .hero-desc {
+            max-width: 600px;
+            color: #94a3b8;
+            font-size: 18px;
+            margin-bottom: 35px;
+        }
+        .btn-container {
+            display: flex;
+            gap: 20px;
+        }
+        .btn {
+            padding: 12px 28px;
+            border-radius: 6px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        .btn-primary {
+            background-color: #38bdf8;
+            color: #0f172a;
+        }
+        .btn-primary:hover {
+            background-color: #0ea5e9;
+            transform: translateY(-2px);
+        }
+        .btn-secondary {
+            border: 1px solid #334155;
+            color: #f1f5f9;
+        }
+        .btn-secondary:hover {
+            background-color: #1e293b;
+            border-color: #475569;
+        }
+
+        /* --- GLOBAL SECTION STYLING --- */
+        section {
+            padding: 100px 10%;
+            border-bottom: 1px solid #1e293b;
+        }
+        .section-title {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 50px;
+            position: relative;
+            display: inline-block;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 50px;
+            height: 4px;
+            background-color: #38bdf8;
+            border-radius: 2px;
+        }
+
+        /* --- ABOUT & TIMELINE --- */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.1fr;
+            gap: 50px;
+        }
+        .about-text p {
+            color: #94a3b8;
+            margin-bottom: 20px;
+            font-size: 16px;
+            text-align: justify;
+        }
+        .timeline {
+            border-left: 2px solid #334155;
+            padding-left: 20px;
+            position: relative;
+        }
+        .timeline-item {
+            margin-bottom: 30px;
+            position: relative;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -27px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #38bdf8;
+            border: 2px solid #0f172a;
+        }
+        .timeline-year {
+            font-size: 12px;
+            color: #38bdf8;
+            font-weight: 600;
+        }
+        .timeline-degree {
+            font-size: 16px;
+            font-weight: 700;
+            color: #f8fafc;
+        }
+        .timeline-inst {
+            font-size: 14px;
+            color: #94a3b8;
+        }
+
+        /* --- SKILLS GRID --- */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+        .skill-box {
+            background-color: #1e293b;
+            border: 1px solid #334155;
+            padding: 25px;
+            border-radius: 8px;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+        .skill-box:hover {
+            transform: translateY(-5px);
+            border-color: #38bdf8;
+        }
+        .skill-box h3 {
+            color: #38bdf8;
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .skill-tags span {
+            background-color: #0f172a;
+            border: 1px solid #334155;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 13px;
+            color: #cbd5e1;
+        }
+
+        /* --- PROJECTS --- */
+        .project-card {
+            background-color: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 12px;
+            padding: 40px;
+            margin-bottom: 40px;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 40px;
+        }
+        .project-info h3 {
+            font-size: 24px;
+            color: #f8fafc;
+            margin-bottom: 15px;
+        }
+        .project-detailed-desc {
+            color: #94a3b8;
+            font-size: 15px;
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+        .project-highlights {
+            list-style: none;
+            margin-bottom: 25px;
+        }
+        .project-highlights li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 8px;
+            color: #cbd5e1;
+            font-size: 14px;
+        }
+        .project-highlights li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: #38bdf8;
+        }
+        .project-tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .project-tech-stack span {
+            background-color: rgba(56, 189, 248, 0.1);
+            color: #38bdf8;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        /* --- FOOTER CONTACT --- */
+        footer {
+            background-color: #0b0f19;
+            padding: 60px 10%;
+            text-align: center;
+            border-top: 1px solid #1e293b;
+        }
+        .footer-title {
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+        .footer-desc {
+            color: #94a3b8;
+            max-width: 500px;
+            margin: 0 auto 30px auto;
+        }
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        .social-icons a {
+            color: #94a3b8;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        .social-icons a:hover {
+            color: #38bdf8;
+        }
+        .copyright {
+            font-size: 13px;
+            color: #475569;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAV -->
+    <nav>
+        <div class="logo">GC.TECH</div>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- HERO -->
+    <header class="hero">
+        <div class="hero-sub">Hi, my name is</div>
+        <h1 class="hero-title">Gobinda Chetry.</h1>
+        <h1 class="hero-title" style="color: #94a3b8; margin-top: -10px;">I build web applications & explore digital security.</h1>
+        <p class="hero-desc">I am an MCA student passionate about full-stack web development and foundational cybersecurity. Alongside building reliable applications, I am actively expanding my knowledge into defensive security frameworks to engineer protected tech environments.</p>
+        <div class="btn-container">
+            <a href="#projects" class="btn btn-primary">Explore My Work</a>
+            <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+        </div>
+    </header>
+
+    <!-- ABOUT SECTION -->
+    <section id="about">
+        <h2 class="section-title">About Me & Journey</h2>
+        <div class="about-grid">
+            <div class="about-text">
+                <p>My journey into technology has a unique pivot. I spent my 11th grade entirely immersed in Biology, but during my 12th grade, I discovered Computer Science. Coming across programming for the first time was incredibly exciting—it opened up a fascinating world of logic that I had never heard of during my younger school days. I made the switch immediately.</p>
+                <p>As I picked up different languages over time, I realized something essential: while the syntax and way of writing change from language to language, the underlying core concepts and logical flows remain exactly the same. That realization made me an adaptable programmer.</p>
+                <p>I enjoy coding practical assignments, constructing utility tools, and mapping out relational schemas. Beyond that, I am driven to learn things outside my immediate domain, explore emerging tech, and dive deep into cybersecurity. My objective is to work hard, blend secure concepts with full-stack logic, and jumpstart my professional career through an impactful development internship.</p>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-year">2025 - 2027</div>
+                    <div class="timeline-degree">Master of Computer Applications (MCA)</div>
+                    <div class="timeline-inst">Presidency College, Bengaluru | 1st Sem SGPA: 8.2</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2022 - 2025</div>
+                    <div class="timeline-degree">Bachelor of Computer Applications (BCA)</div>
+                    <div class="timeline-inst">Gauhati University, Assam | CGPA: 8.13</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2020 - 2022</div>
+                    <div class="timeline-degree">AHSEC Science (12th Grade)</div>
+                    <div class="timeline-inst">Ajmal College of Arts, Commerce and Science, Assam | Score: 75%<br><em style="font-size: 13px; color: #38bdf8;">*The turning point where I discovered Computer Science</em></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">Completed 2020</div>
+                    <div class="timeline-degree">SEBA Assam (10th Grade)</div>
+                    <div class="timeline-inst">Arunoday Senior Secondary School, Hojai, Assam | Score: 84.50%</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SKILLS SECTION -->
+    <section id="skills">
+        <h2 class="section-title">Technical Matrix</h2>
+        <div class="skills-container">
+            <div class="skill-box">
+                <h3>Programming Languages</h3>
+                <div class="skill-tags">
+                    <span>PHP</span><span>Java</span><span>C</span><span>C++</span>
+                </div>
+            </div>
+            <div class="skill-box">
+                <h3>Web Development</h3>
+                <div class="skill-tags">
+                    <span>HTML5</span><span>CSS3</span><span>JavaScript</span>
+                </div>
+            </div>
+            <div class="skill-box">
+                <h3>Databases & Environments</h3>
+                <div class="skill-tags">
+                    <span>MySQL</span><span>Oracle</span><span>WAMP Server</span><span>Linux</span><span>Windows</span>
+                </div>
+            </div>
+            <div class="skill-box">
+                <h3>Expanding Knowledge</h3>
+                <div class="skill-tags">
+                    <span>Data Structures (DSA)</span><span>User Login Flow</span><span>Basic Cybersecurity Concepts</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECTS SECTION -->
+    <section id="projects">
+        <h2 class="section-title">Detailed Projects</h2>
+
+        <!-- Project 1 -->
+        <div class="project-card">
+            <div class="project-info">
+                <h3>1. Admission Management System</h3>
+                <p class="project-detailed-desc">Built a dynamic web application designed to handle student application forms digitally. It features a registration flow allowing students to sign up, log into their dashboard securely, view available academic tracks, and submit their course preferences directly to the storage database.</p>
+                <ul class="project-highlights">
+                    <li>Created relational tables inside phpMyAdmin to keep track of user credentials and form inputs.</li>
+                    <li>Utilized native PHP sessions to track when a user is successfully logged into the platform.</li>
+                    <li>Designed clean, user-friendly HTML web page layouts styled beautifully using CSS.</li>
+                </ul>
+            </div>
+            <div style="display: flex; flex-direction: column; justify-content: space-between; align-items: flex-start;">
+                <div>
+                    <h4 style="margin-bottom: 10px; color: #cbd5e1;">Project Mechanics</h4>
+                    <p style="font-size: 13px; color: #94a3b8; margin-bottom: 20px;">Handles front-to-back operations locally by leveraging a cohesive WAMP local server configuration pipeline.</p>
+                </div>
+                <div class="project-tech-stack">
+                    <span>PHP</span><span>MySQL</span><span>JavaScript</span><span>HTML5</span><span>CSS3</span><span>WAMP</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="project-card">
+            <div class="project-info">
+                <h3>2. Task Tracker Application</h3>
+                <p class="project-detailed-desc">Developed an efficient tracker layout to help organize routine tasks. Users can authenticate into their profiles to look at their pending duties, dynamically append new entries to the active database list, track priorities, and safely remove tasks once complete.</p>
+                <ul class="project-highlights">
+                    <li>Implemented CRUD mechanics (Create, Read, Update, Delete) for seamless data modification loops.</li>
+                    <li>Managed user state parameters to ensure accounts only view their specific task lists.</li>
+                </ul>
+            </div>
+            <div style="display: flex; flex-direction: column; justify-content: space-between; align-items: flex-start;">
+                <div>
+                    <h4 style="margin-bottom: 10px; color: #cbd5e1;">Task Controls</h4>
+                    <p style="font-size: 13px; color: #94a3b8; margin-bottom: 20px;">Utilizes straightforward logical processing streams to change data records upon click events.</p>
+                </div>
+                <div class="project-tech-stack">
+                    <span>JavaScript</span><span>PHP</span><span>MySQL</span><span>HTML5</span><span>CSS3</span>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- CONTACT FOOTER -->
+    <footer id="contact">
+        <h2 class="footer-title">Let's Connect</h2>
+        <p class="footer-desc">I am actively looking for engineering internship positions in Web Development or Full-Stack roles. Let's talk about technical frameworks!</p>
+        
+        <div class="social-icons">
+            <a href="mailto:gobindachetry.tech@gmail.com">Email</a>
+            <a href="https://linkedin.com/in/gobinda-chetry" target="_blank">LinkedIn</a>
+            <a href="https://github.com/gobinda011" target="_blank">GitHub</a>
+        </div>
+
+        <p class="copyright">&copy; 2026 Gobinda Chetry. Built completely from scratch.</p>
+    </footer>
+
+</body>
+</html>
